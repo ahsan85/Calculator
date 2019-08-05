@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        .item1 {
+            background-color: #4285F4;
+            grid-area: header;
+            /* width: 360px; */
+        }
+     
+        .item2 {
+            background-color: green;
+            grid-area: advert;
+
+        }
+
+        .item3 {
+            background-color: #E8EAED;
+            grid-area: content;
+        }
+
+        .item4 {
+            background-color: yellow;
+            grid-area: footer;
+
+        }
+
+        .container {
+            font-size: 1.5em;
+            min-height: 300px;
+            width: 100%;
+            background: LightGray;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 50px auto 1fr auto;
+            grid-gap: 10px;
+            grid-template-areas:
+                "header"
+                "advert"
+                "content"
+                "footer";
+        }
+
+        img {
+            width: 200px;
+            height: 150px;
+        }
+
+        @media(max-width:1380px) {
+            .container {
+                grid-template-columns: auto 1fr;
+                grid-template-rows: auto auto auto;
+                grid-template-areas:
+                    "header header  "
+                    "advert content"
+                    "footer footer";
+            }
+
+        }
+
+
+        body {
+            margin: 0;
+        }
+
+        ul {
+            background-color: black;
+            list-style-type: none;
+            padding: 0px;
+            margin: 0px;
+            overflow: hidden;
+        }
+
+        li a {
+            text-decoration: none;
+            padding: 14px 16px;
+            color: white;
+            display: block;
+            font-size: 25px;
+        }
+
+        nav>ul>li:first-child {
+
+            text-decoration: none;
+            padding: 14px 16px;
+            color: white;
+            display: block;
+            font-size: 25px;
+            background-color: green;
+        }
+
+        li a:hover {
+            background-color: #333333;
+        }
+
+
+        li {
+            float: left;
+        }
+    </style>
+    <div class="container">
+        <div class="item1  item-width">
+            <!-- <nav> 
+                <ul>
+                    <li id="liHome">
+                        Home
+                    </li>
+                    <li><a href="#HtmlNews"> HTML</a> </li>
+                    <li><a href="#CssNews">CSS</a></li>
+                    <li><a href="#CNews">C</a></li>
+                    <li><a href="#news2">C++</a> </li>
+                    <li><a href="#news3">C#</a> </li>
+                    <li><a href="#news4">Java</a></li>
+                    <li><a href="#news5">CSS</a></li>
+                    <li><a href="#news6">Bootstrape</a></li>
+                    <li><a href="#news7">Python</a></li>
+                    <li><a href="#news8">Ruby</a></li>
+                    <li><a href="#news9">Perl</a></li>
+                    <li><a href="#news">PHP</a></li>
+                    <li><a href="#news">.Net</a></li>
+                    <li><a href="#news">Java Script</a></li>
+                </ul> -->
+
+            </nav>
+        </div>
+        <div class="item2">kl
+            <!-- <img src="D:\Web\myproject\keyboard.jpg" alt="">
+            <br>
+            <img src="D:\Web\myproject\keyboard.jpg" alt=""><br>
+            <img src="D:\Web\myproject\keyboard.jpg" alt=""><br>
+            <img src="D:\Web\myproject\keyboard.jpg" alt=""><br>
+            <img src="D:\Web\myproject\keyboard.jpg" alt=""><br>
+            <img src="D:\Web\myproject\keyboard.jpg" alt=""><br>
+            <img src="D:\Web\myproject\keyboard.jpg" alt=""><br>
+            <img src="D:\Web\myproject\keyboard.jpg" alt=""><br>
+            <img src="D:\Web\myproject\keyboard.jpg" alt=""> -->
+
+        </div>
+        <div class="item3" style="padding: 0 10px">
+            <!-- <div id="HtmlNews">
+                    <h1>History of HTML</h1>
+                    Hypertext Markup Language (HTML) is the standard markup language for documents designed to be displayed in a web browser. It can be assisted by technologies such as Cascading Style Sheets (CSS) and scripting languages such as JavaScript.
+
+                        Web browsers receive HTML documents from a web server or from local storage and render the documents into multimedia web pages. HTML describes the structure of a web page semantically and originally included cues for the appearance of the document.
+                        
+                        HTML elements are the building blocks of HTML pages. With HTML constructs, images and other objects such as interactive forms may be embedded into the rendered page. HTML provides a means to create structured documents by denoting structural semantics for text such as headings, paragraphs, lists, links, quotes and other items. HTML elements are delineated by tags, written using angle brackets. Tags such as img  and input directly introduce content into the page. Other tags such as  surround and provide information about document text and may include other tags as sub-elements. Browsers do not display the HTML tags, but use them to interpret the content of the page.
+                        
+                        HTML can embed programs written in a scripting language such as JavaScript, which affects the behavior and content of web pages. Inclusion of CSS defines the look and layout of content. The World Wide Web Consortium (W3C), former maintainer of the HTML and current maintainer of the CSS standards, has encouraged the use of CSS over explicit presentational HTML since 1997.[2]</div>
+                <div  id="CssNews">
+                    <h1>CSS3 History</h1>
+                    CSS3 is the latest evolution of the Cascading Style Sheets language and aims at extending CSS2.1. It brings a lot of long-awaited novelties, like rounded corners, shadows, gradients, transitions or animations, as well as new layouts like multi-columns, flexible box or grid layouts. Experimental parts are vendor-prefixed and should either be avoided in production environments, or used with extreme caution as both their syntax and semantics can change in the future.</div>
+             <div  id="CNews">
+                <h1>History of C</h1> 
+                C (/siː/, as in the letter c) is a general-purpose, procedural computer programming language supporting structured programming, lexical variable scope, and recursion, while a static type system prevents unintended operations. By design, C provides constructs that map efficiently to typical machine instructions, and has found lasting use in applications previously coded in assembly language. Such applications include operating systems, as well as various application software for computers ranging from supercomputers to embedded systems.
+
+                C was originally developed at Bell Labs by Dennis Ritchie between 1972 and 1973 to make utilities running on Unix. Later, it was applied to re-implementing the kernel of the Unix operating system[6]. During the 1980s, C gradually gained popularity. Nowadays, it is one of the most widely used programming languages,[7][8] with C compilers from various vendors available for the majority of existing computer architectures and operating systems. C has been standardized by the ANSI since 1989 (see ANSI C) and subsequently by the International Organization for Standardization.
+                
+                C is an imperative procedural language. It was designed to be compiled using a relatively straightforward compiler, to provide low-level access to memory, to provide language constructs that map efficiently to machine instructions, and to require minimal runtime support. Despite its low-level capabilities, the language was designed to encourage cross-platform programming. A standards-compliant C program that is written with portability in mind can be compiled for a wide variety of computer platforms and operating systems with few changes to its source code; the language has become available on various platforms, from embedded microcontrollers to supercomputers.</div>
+            
+             <div></div>
+             <div></div>
+             <div></div>
+             <div></div>        -->
+        </div>
+        <div class="item4">
+            footer
+        </div>
+
+    </div>
+
+</body>
+
+</html>

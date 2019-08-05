@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<div id="div1">
+<p id="p1">This is a paragraph.</p>
+<p id="p2">This is another paragraph.</p>
+</div>
+
+<script>
+var para=document.createElement("p");
+var node=document.createTextNode("This my first paragraph");
+para.appendChild(node);
+var Div=document.getElementById("div1");
+Div.appendChild(para);
+</script>
+
+</body>
+</html>

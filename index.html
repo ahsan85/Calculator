@@ -163,7 +163,6 @@
             else {
                 var newValue = parseInt(prev * 10) + parseInt(element.value);
                 inputBox.value = newValue;
-                console.log(newValue);
             }
 
 
@@ -218,8 +217,13 @@
             document.getElementById("inputBox1").focus();
             document.getElementById("inputBox1").defaultValue = parseInt(0);
         }
+         // Validation on Input
+        document.querySelector("input").addEventListener("keypress", function (evt) {
+            if (evt.which < 48 || evt.which > 57) {
+                evt.preventDefault();
+            }
 
-
+        });
 
 
     </script>
