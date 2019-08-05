@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- <script src="JavaScript.js"></script> -->
+    <style>
+        .input-box {
+            border-radius: 2px;
+            border: 1px solid #ccc;
+            width: 95%;
+            height: 35px;
+            padding-left: 6px;
+            padding-right: 6px;
+        }
+
+        .margin-top-bottom-10 {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .form-style {
+
+            width: 280px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin: 20px 35%;
+            padding: 20px;
+            box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.19);
+        }
+
+        .btn {
+            border: 1px solid #ccc;
+            background-color: #FFAA00;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            font-size: 25px;
+            cursor: pointer;
+
+        }
+
+        .btn-hover:hover {
+            background: linear-gradient(3deg, #FFFFFF, #FAA78E);
+        }
+
+        .btn-transparent-hover:hover {
+            animation-name: colorful;
+            animation-duration: 3s;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes colorful {
+            0% {
+                background: linear-gradient(3deg, #FFFFFF, #FAA78E);
+            }
+
+            100% {
+                background-color: lightslategray;
+            }
+        }
+
+        .btn-margin {
+            margin: 6px;
+        }
+
+        @media only screen and (max-width: 700px) {
+            .form-style {
+                margin: 3px 6%;
+                padding: 10px;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .form-style {
+                margin: 3px 28%;
+                padding: 10px;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+
+            .form-style {
+                margin: 3px 36%;
+                padding: 10px;
+            }
+        }
+    </style>
+
+</head>
+
+<body onload="getFocusOnPage()">
+
+
+    <div class="form-style">
+        <div>
+            <input type="text" class="input-box margin-top-bottom-10" id="inputBox1" autocomplete="off"
+                onfocus="focusElement(this)">
+            <span id="getChar" style="text-align: right ;float:right;"></span>
+            <input type="text" class="input-box margin-top-bottom-10" id="inputBox2" autocomplete="off"
+                onfocus="focusElement(this)">
+        </div>
+        <div>
+            <input type="button" name="button" value="7" class="btn  btn-margin  btn-hover"
+                onclick="onNumberClick(this)">
+            <input type="button" name="button" value="8" class="btn  btn-margin  btn-hover"
+                onclick="onNumberClick(this)">
+            <input type="button" name="button" value="9" class="btn  btn-margin  btn-hover"
+                onclick="onNumberClick(this)">
+            <input type="button" name="button" value="x" class="btn  btn-margin  btn-hover"
+                onclick="onOperatorClick(this);setFocusToTextBox()">
+        </div>
+        <div>
+            <input type="button" name="button" value="4" class="btn  btn-margin  btn-hover"
+                onclick="onNumberClick(this)">
+            <input type="button" name="button" value="5" class="btn  btn-margin  btn-hover"
+                onclick="onNumberClick(this)">
+            <input type="button" name="button" value="6" class="btn  btn-margin  btn-hover"
+                onclick="onNumberClick(this)">
+            <input type="button" name="button" value="-" class="btn  btn-margin  btn-hover"
+                onclick="onOperatorClick(this) ;setFocusToTextBox()">
+        </div>
+        <div>
+            <input type="button" name="button" value="1" class="btn  btn-margin  btn-hover"
+                onclick="onNumberClick(this)">
+            <input type="button" name="button" value="2" class="btn  btn-margin  btn-hover"
+                onclick="onNumberClick(this)">
+            <input type="button" name="button" value="3" class="btn  btn-margin  btn-hover"
+                onclick="onNumberClick(this)">
+            <input type="button" name="button" value="+" class="btn  btn-margin  btn-hover"
+                onclick="onOperatorClick(this);setFocusToTextBox()">
+        </div>
+        <div>
+            <input type="button" name="button" value="." class="btn  btn-margin  btn-hover"
+                onclick="onNumberClick(this)">
+            <input type="button" name="button" value="0" class="btn  btn-margin  btn-hover"
+                onclick="onNumberClick(this)">
+            <input type="button" name="button" value="/" class="btn  btn-margin  btn-hover"
+                onclick="onOperatorClick(this);setFocusToTextBox()">
+            <input type="button" name="button" value="=" class="btn  btn-margin             btn-transparent-hover"
+                onclick="onClickEqualOpr()">
+        </div>
+    </div>
+
+
+
+    <script>
+        var inputBox;
+        var oprClick;
+
+
+        function onNumberClick(element) {
+
+            var prev = inputBox.value;
+
+            if (isNulOrEmpty(prev)) {
+                inputBox.value = element.value;
+
+            }
+            else {
+                var newValue = parseInt(prev * 10) + parseInt(element.value);
+                inputBox.value = newValue;
+                console.log(newValue);
+            }
+
+
+        }
+
+
+        function isNulOrEmpty(val) {
+            if (typeof val === 'undefined' || val.length == 0) {
+                return true;
+            }
+            return false;
+
+        }
+
+        function focusElement($focusElement) {
+            inputBox = $focusElement;
+        }
+
+        function onOperatorClick(opr) {
+            oprClick = opr;
+            document.getElementById("getChar").innerHTML = oprClick.value;
+            console.log(document.getElementById("getChar").innerHTML);
+
+        }
+        function setFocusToTextBox() {
+            document.getElementById("inputBox2").focus();
+        }
+
+        function onClickEqualOpr() {
+
+            if (oprClick.value == '*' || oprClick.value == 'x') {
+
+                alert(`${parseInt(document.getElementById("inputBox1").value)} x ${parseInt(document.getElementById("inputBox2").value)} = ${parseInt(document.getElementById("inputBox1").value) * (parseInt(document.getElementById("inputBox2").value))}`)
+            }
+            else if (oprClick.value == '-') {
+                alert(`${parseInt(document.getElementById("inputBox1").value)} - ${parseInt(document.getElementById("inputBox2").value)} = ${parseInt(document.getElementById("inputBox1").value) - (parseInt(document.getElementById("inputBox2").value))}`)
+
+            }
+            else if (oprClick.value == '+') {
+                alert(`${parseInt(document.getElementById("inputBox1").value)} + ${parseInt(document.getElementById("inputBox2").value)} = ${parseInt(document.getElementById("inputBox1").value) + (parseInt(document.getElementById("inputBox2").value))}`)
+
+            }
+            else if (oprClick.value == '/') {
+                alert(`${parseInt(document.getElementById("inputBox1").value)} / ${parseInt(document.getElementById("inputBox2").value)} = ${parseInt(document.getElementById("inputBox1").value) / (parseInt(document.getElementById("inputBox2").value))}`)
+
+            }
+
+
+        }
+
+        function getFocusOnPage() {
+            document.getElementById("inputBox1").focus();
+            document.getElementById("inputBox1").defaultValue = parseInt(0);
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>
