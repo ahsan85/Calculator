@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <!-- <script src="JavaScript.js"></script> -->
     <style>
         .input-box {
             border-radius: 2px;
@@ -93,8 +92,6 @@
 </head>
 
 <body onload="getFocusOnPage()">
-
-
     <div class="form-style">
         <div>
             <input type="text" class="input-box margin-top-bottom-10" id="inputBox1" autocomplete="off"
@@ -135,7 +132,7 @@
         </div>
         <div>
             <input type="button" name="button" value="." class="btn  btn-margin  btn-hover"
-                onclick="onNumberClick(this)">
+                onclick="OnDecimalOprClick(this)">
             <input type="button" name="button" value="0" class="btn  btn-margin  btn-hover"
                 onclick="onNumberClick(this)">
             <input type="button" name="button" value="/" class="btn  btn-margin  btn-hover"
@@ -144,31 +141,39 @@
                 onclick="onClickEqualOpr()">
         </div>
     </div>
-
-
-
+    <!-- JavaScript Code -->
     <script>
         var inputBox;
         var oprClick;
+        var factor;
+        var prev;
 
-
+        // This function will execute when user click on Numeric Buttons
+        // (0, 1, 2, 3, 4, 5, 6, 7, 8, 9)      
         function onNumberClick(element) {
 
-            var prev = inputBox.value;
-
+            prev = inputBox.value;
             if (isNulOrEmpty(prev)) {
                 inputBox.value = element.value;
-
             }
             else {
-                var newValue = parseInt(prev * 10) + parseInt(element.value);
-                inputBox.value = newValue;
+                // 1, 10, 100, 1000, 10000
+                var factor = 1;
+
+                // calculate factor, it will be used to devide the final result 
+                // to get back the decimal point in value.
+                if (prev.indexOf(".") > -1) {
+                    var position = prev.length - (prev.indexOf(".") + 1);
+                    factor = Math.pow(10, position) * 10;
+                }
+
+                var newValue = parseFloat(prev.replace('.', '')) * 10 + parseFloat(element.value);
+                inputBox.value = parseFloat(newValue / factor);
             }
-
-
         }
 
-
+        // This is bool type function which returns true if variable contain "undefined" value
+        // It will return false if variable is "empty"
         function isNulOrEmpty(val) {
             if (typeof val === 'undefined' || val.length == 0) {
                 return true;
@@ -177,54 +182,66 @@
 
         }
 
+        // This function will get focus element and will store in 'inputBox' variable
         function focusElement($focusElement) {
             inputBox = $focusElement;
         }
 
+        //  This function will execute when user click on Operator Buttons
+        // * - + /
         function onOperatorClick(opr) {
             oprClick = opr;
             document.getElementById("getChar").innerHTML = oprClick.value;
             console.log(document.getElementById("getChar").innerHTML);
 
         }
+
+        /*This fuction wiil set focus on inputBox2 
+        when user click on any Operator Button after typing value in inputBox1*/
         function setFocusToTextBox() {
             document.getElementById("inputBox2").focus();
         }
 
+
+        //  This function will execute when user click on Equal Button
+        //  contain coditions
         function onClickEqualOpr() {
 
             if (oprClick.value == '*' || oprClick.value == 'x') {
 
-                alert(`${parseInt(document.getElementById("inputBox1").value)} x ${parseInt(document.getElementById("inputBox2").value)} = ${parseInt(document.getElementById("inputBox1").value) * (parseInt(document.getElementById("inputBox2").value))}`)
+                alert(`${parseFloat(document.getElementById("inputBox1").value)} x ${parseFloat(document.getElementById("inputBox2").value)} = ${parseFloat(document.getElementById("inputBox1").value) * (parseFloat(document.getElementById("inputBox2").value))}`)
             }
             else if (oprClick.value == '-') {
-                alert(`${parseInt(document.getElementById("inputBox1").value)} - ${parseInt(document.getElementById("inputBox2").value)} = ${parseInt(document.getElementById("inputBox1").value) - (parseInt(document.getElementById("inputBox2").value))}`)
-
+                alert(`${parseFloat(document.getElementById("inputBox1").value)} - ${parseFloat(document.getElementById("inputBox2").value)} = ${parseFloat(document.getElementById("inputBox1").value) - (parseFloat(document.getElementById("inputBox2").value))}`)
             }
             else if (oprClick.value == '+') {
-                alert(`${parseInt(document.getElementById("inputBox1").value)} + ${parseInt(document.getElementById("inputBox2").value)} = ${parseInt(document.getElementById("inputBox1").value) + (parseInt(document.getElementById("inputBox2").value))}`)
-
+                alert(`${parseFloat(document.getElementById("inputBox1").value)} + ${parseFloat(document.getElementById("inputBox2").value)} = ${parseFloat(document.getElementById("inputBox1").value) + (parseFloat(document.getElementById("inputBox2").value))}`)
             }
             else if (oprClick.value == '/') {
-                alert(`${parseInt(document.getElementById("inputBox1").value)} / ${parseInt(document.getElementById("inputBox2").value)} = ${parseInt(document.getElementById("inputBox1").value) / (parseInt(document.getElementById("inputBox2").value))}`)
-
+                alert(`${parseFloat(document.getElementById("inputBox1").value)} / ${parseFloat(document.getElementById("inputBox2").value)} = ${parseFloat(document.getElementById("inputBox1").value) / (parseFloat(document.getElementById("inputBox2").value))}`)
             }
-
-
         }
 
+        // This function will set focus to inputBox1 when page loads.
+        // It will also set default value in inputBox1.
         function getFocusOnPage() {
             document.getElementById("inputBox1").focus();
             document.getElementById("inputBox1").defaultValue = parseInt(0);
         }
 
-        // Validation on Input
+        // Validation on InputBox 
         document.querySelector("input").addEventListener("keypress", function (evt) {
-            if (evt.which < 48 || evt.which > 57) {
+            if (evt.which < 48 || evt.which > 109 || evt.which > 111) {
                 evt.preventDefault();
             }
-
         });
+
+
+        // This function will execute when user click on decimal Point Button
+        function OnDecimalOprClick($dec) {
+            var decimalValue = inputBox.value + $dec.value;
+            inputBox.value = decimalValue;
+        }
 
     </script>
 </body>
