@@ -11,9 +11,10 @@
             border-radius: 2px;
             border: 1px solid #ccc;
             width: 95%;
-            height: 35px;
+            height: 55px;
             padding-left: 6px;
             padding-right: 6px;
+            font-size: 30px;
         }
 
         .margin-top-bottom-10 {
@@ -32,35 +33,24 @@
         }
 
         .btn {
-            border: 1px solid #ccc;
-            background-color: #FFAA00;
+            border: 1px solid #FF5E00;
+            background-color: #FF5E00;
             width: 55px;
             height: 55px;
-            border-radius: 50%;
-            font-size: 25px;
+
+            font-size: 35px;
+            color: white;
             cursor: pointer;
 
         }
 
         .btn-hover:hover {
-            background: linear-gradient(3deg, #FFFFFF, #FAA78E);
+            background: #FFAC7B;
+            border-color: #FFAC7B;
         }
 
-        .btn-transparent-hover:hover {
-            animation-name: colorful;
-            animation-duration: 3s;
-            animation-fill-mode: forwards;
-        }
 
-        @keyframes colorful {
-            0% {
-                background: linear-gradient(3deg, #FFFFFF, #FAA78E);
-            }
 
-            100% {
-                background-color: lightslategray;
-            }
-        }
 
         .btn-margin {
             margin: 6px;
@@ -96,9 +86,8 @@
         <div>
             <input type="text" class="input-box margin-top-bottom-10" id="inputBox1" autocomplete="off"
                 onfocus="focusElement(this)">
-            <span id="getChar" style="text-align: right ;float:right;"></span>
-            <input type="text" class="input-box margin-top-bottom-10" id="inputBox2" autocomplete="off"
-                onfocus="focusElement(this)">
+
+
         </div>
         <div>
             <input type="button" name="button" value="7" class="btn  btn-margin  btn-hover"
@@ -108,7 +97,7 @@
             <input type="button" name="button" value="9" class="btn  btn-margin  btn-hover"
                 onclick="onNumberClick(this)">
             <input type="button" name="button" value="x" class="btn  btn-margin  btn-hover"
-                onclick="onOperatorClick(this);setFocusToTextBox()">
+                onclick="onOperatorClick(this);">
         </div>
         <div>
             <input type="button" name="button" value="4" class="btn  btn-margin  btn-hover"
@@ -118,7 +107,7 @@
             <input type="button" name="button" value="6" class="btn  btn-margin  btn-hover"
                 onclick="onNumberClick(this)">
             <input type="button" name="button" value="-" class="btn  btn-margin  btn-hover"
-                onclick="onOperatorClick(this) ;setFocusToTextBox()">
+                onclick="onOperatorClick(this) ;">
         </div>
         <div>
             <input type="button" name="button" value="1" class="btn  btn-margin  btn-hover"
@@ -128,7 +117,7 @@
             <input type="button" name="button" value="3" class="btn  btn-margin  btn-hover"
                 onclick="onNumberClick(this)">
             <input type="button" name="button" value="+" class="btn  btn-margin  btn-hover"
-                onclick="onOperatorClick(this);setFocusToTextBox()">
+                onclick="onOperatorClick(this)">
         </div>
         <div>
             <input type="button" name="button" value="." class="btn  btn-margin  btn-hover"
@@ -136,9 +125,8 @@
             <input type="button" name="button" value="0" class="btn  btn-margin  btn-hover"
                 onclick="onNumberClick(this)">
             <input type="button" name="button" value="/" class="btn  btn-margin  btn-hover"
-                onclick="onOperatorClick(this);setFocusToTextBox()">
-            <input type="button" name="button" value="=" class="btn  btn-margin             btn-transparent-hover"
-                onclick="onClickEqualOpr()">
+                onclick="onOperatorClick(this)">
+            <input type="button" name="button" value="=" class="btn  btn-margin  btn-hover" onclick="onClickEqualOpr()">
         </div>
     </div>
     <!-- JavaScript Code -->
@@ -147,6 +135,8 @@
         var oprClick;
         var factor;
         var prev;
+        var firstValue;
+        var Ib = document.getElementById("inputBox1").value
 
         // This function will execute when user click on Numeric Buttons
         // (0, 1, 2, 3, 4, 5, 6, 7, 8, 9)      
@@ -191,34 +181,28 @@
         // * - + /
         function onOperatorClick(opr) {
             oprClick = opr;
-            document.getElementById("getChar").innerHTML = oprClick.value;
-            console.log(document.getElementById("getChar").innerHTML);
-
+            if (oprClick.value === 'x' || oprClick.value === '-' || oprClick.value === '+' || oprClick.value === '/') {
+                firstValue = inputBox.value;
+                inputBox.value = '';
+            }
         }
-
-        /*This fuction wiil set focus on inputBox2 
-        when user click on any Operator Button after typing value in inputBox1*/
-        function setFocusToTextBox() {
-            document.getElementById("inputBox2").focus();
-        }
-
 
         //  This function will execute when user click on Equal Button
         //  contain coditions
         function onClickEqualOpr() {
 
-            if (oprClick.value == '*' || oprClick.value == 'x') {
-
-                alert(`${parseFloat(document.getElementById("inputBox1").value)} x ${parseFloat(document.getElementById("inputBox2").value)} = ${parseFloat(document.getElementById("inputBox1").value) * (parseFloat(document.getElementById("inputBox2").value))}`)
+            if (oprClick.value === '*' || oprClick.value === 'x') {
+                document.getElementById("inputBox1").value = (parseFloat(firstValue) * parseFloat(inputBox.value));
             }
             else if (oprClick.value == '-') {
-                alert(`${parseFloat(document.getElementById("inputBox1").value)} - ${parseFloat(document.getElementById("inputBox2").value)} = ${parseFloat(document.getElementById("inputBox1").value) - (parseFloat(document.getElementById("inputBox2").value))}`)
+                document.getElementById("inputBox1").value = (parseFloat(firstValue) - parseFloat(inputBox.value));
+
             }
             else if (oprClick.value == '+') {
-                alert(`${parseFloat(document.getElementById("inputBox1").value)} + ${parseFloat(document.getElementById("inputBox2").value)} = ${parseFloat(document.getElementById("inputBox1").value) + (parseFloat(document.getElementById("inputBox2").value))}`)
+                document.getElementById("inputBox1").value = (parseFloat(firstValue) + parseFloat(inputBox.value));
             }
             else if (oprClick.value == '/') {
-                alert(`${parseFloat(document.getElementById("inputBox1").value)} / ${parseFloat(document.getElementById("inputBox2").value)} = ${parseFloat(document.getElementById("inputBox1").value) / (parseFloat(document.getElementById("inputBox2").value))}`)
+                document.getElementById("inputBox1").value = (parseFloat(firstValue) / parseFloat(inputBox.value));
             }
         }
 
