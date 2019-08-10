@@ -5,12 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+     <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <title>Document</title>
     <style>
         .input-box {
             border-radius: 2px;
             border: 1px solid #ccc;
-            width: 95%;
+            width: 99%;
             height: 55px;
             padding-left: 6px;
             padding-right: 6px;
@@ -32,28 +39,18 @@
             box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.19);
         }
 
-        .btn {
-            border: 1px solid #FF5E00;
-            background-color: #FF5E00;
-            width: 55px;
-            height: 55px;
-
-            font-size: 35px;
-            color: white;
-            cursor: pointer;
-
+         .btn-fixed-size{
+   
+            width: 50px !important;
+            height: 50px !important;
+            font-size: 24px;
+            text-align: center;
         }
-
-        .btn-hover:hover {
-            background: #FFAC7B;
-            border-color: #FFAC7B;
-        }
-
 
 
 
         .btn-margin {
-            margin: 6px;
+            margin: 3px;
         }
 
         @media only screen and (max-width: 700px) {
@@ -90,43 +87,43 @@
 
         </div>
         <div>
-            <input type="button" name="button" value="7" class="btn  btn-margin  btn-hover"
+            <input type="button" name="button" value="7" class="btn btn-margin btn-outline-primary btn-fixed-size "
                 onclick="onNumberClick(this)">
-            <input type="button" name="button" value="8" class="btn  btn-margin  btn-hover"
+            <input type="button" name="button" value="8" class="btn  btn-margin  btn-outline-primary btn-fixed-size  "
                 onclick="onNumberClick(this)">
-            <input type="button" name="button" value="9" class="btn  btn-margin  btn-hover"
+            <input type="button" name="button" value="9" class="btn  btn-margin   btn-outline-primary  btn-fixed-size "
                 onclick="onNumberClick(this)">
-            <input type="button" name="button" value="x" class="btn  btn-margin  btn-hover"
+            <input type="button" name="button" value="x" class="btn  btn-margin   btn-outline-danger  btn-fixed-size "
                 onclick="onOperatorClick(this);">
         </div>
         <div>
-            <input type="button" name="button" value="4" class="btn  btn-margin  btn-hover"
+            <input type="button" name="button" value="4" class="btn  btn-margin   btn-outline-primary btn-fixed-size"
                 onclick="onNumberClick(this)">
-            <input type="button" name="button" value="5" class="btn  btn-margin  btn-hover"
+            <input type="button" name="button" value="5" class="btn  btn-margin  btn-outline-primary btn-fixed-size "
                 onclick="onNumberClick(this)">
-            <input type="button" name="button" value="6" class="btn  btn-margin  btn-hover"
+            <input type="button" name="button" value="6" class="btn  btn-margin    btn-outline-primary btn-fixed-size"
                 onclick="onNumberClick(this)">
-            <input type="button" name="button" value="-" class="btn  btn-margin  btn-hover"
+            <input type="button" name="button" value="-" class="btn  btn-margin   btn-outline-danger btn-fixed-size"
                 onclick="onOperatorClick(this) ;">
         </div>
         <div>
-            <input type="button" name="button" value="1" class="btn  btn-margin  btn-hover"
+            <input type="button" name="button" value="1" class="btn  btn-margin   btn-outline-primary btn-fixed-size"
                 onclick="onNumberClick(this)">
-            <input type="button" name="button" value="2" class="btn  btn-margin  btn-hover"
+            <input type="button" name="button" value="2" class="btn  btn-margin   btn-outline-primary btn-fixed-size"
                 onclick="onNumberClick(this)">
-            <input type="button" name="button" value="3" class="btn  btn-margin  btn-hover"
+            <input type="button" name="button" value="3" class="btn  btn-margin   btn-outline-primary btn-fixed-size"
                 onclick="onNumberClick(this)">
-            <input type="button" name="button" value="+" class="btn  btn-margin  btn-hover"
+            <input type="button" name="button" value="+" class="btn  btn-margin   btn-outline-danger btn-fixed-size "
                 onclick="onOperatorClick(this)">
         </div>
         <div>
-            <input type="button" name="button" value="." class="btn  btn-margin  btn-hover"
+            <input type="button" name="button" value="." class="btn  btn-margin   btn-outline-primary btn-fixed-size "
                 onclick="OnDecimalOprClick(this)">
-            <input type="button" name="button" value="0" class="btn  btn-margin  btn-hover"
+            <input type="button" name="button" value="0" class="btn  btn-margin   btn-outline-primary btn-fixed-size" 
                 onclick="onNumberClick(this)">
-            <input type="button" name="button" value="/" class="btn  btn-margin  btn-hover"
+            <input type="button" name="button" value="/" class="btn  btn-margin   btn-outline-danger btn-fixed-size"
                 onclick="onOperatorClick(this)">
-            <input type="button" name="button" value="=" class="btn  btn-margin  btn-hover" onclick="onClickEqualOpr()">
+            <input type="button" name="button" value="=" class="btn  btn-margin   btn-outline-success  btn-fixed-size" onclick="onClickEqualOpr()">
         </div>
     </div>
     <!-- JavaScript Code -->
@@ -215,7 +212,7 @@
 
         // Validation on InputBox 
         document.querySelector("input").addEventListener("keypress", function (evt) {
-            if (evt.which < 48 || evt.which > 109 || evt.which > 111) {
+            if (evt.which < 48 || evt.which > 57) {
                 evt.preventDefault();
             }
         });
